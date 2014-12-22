@@ -7,7 +7,7 @@ This repository consists of neuroimaging workflows writtten in nipype with a foc
 In order to run the code provided in this repository the following software need to be avaliable:
 
  - PBS Job scheduler
- - Required Module:
+ - Required Modules:
   - python (version 2.7.6)
   - nipype (version 0.8)
   - fsl (version 5.0.5)
