@@ -2,7 +2,7 @@
 
 This repository consists of neuroimaging workflows writtten in nipype with a focus on the Portable Batch System (PBS) job scheduler. It provides tools and documentation for BMC users using the services of UF's Researchcomputing (RC) group.
 
-* ### Installation
+### Installation
 
 In order to run the code provided in this repository the following software need to be avaliable:
 
@@ -22,12 +22,12 @@ module load fsl/5.0.5
 module load mricron/201306
 ```
 
-* Contributors
+### Contributors
 
  - Philip Chase
  - Mohan Katragadda
  - Ruchi Desai
 
-* License
+### License
 
 New BSD License which can be found [here](https://github.com/ruchidesai/nipype-pbs-workflows/blob/master/LICENSE)
