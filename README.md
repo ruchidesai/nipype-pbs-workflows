@@ -1,6 +1,7 @@
 ## nipype-workflows
 
-This repository consists of neuroimaging workflows writtten in nipype with a focus on the Portable Batch System (PBS) job scheduler. It provides tools and documentation for BMC users using the services of UF's Researchcomputing (RC) group.
+This repository consists of neuroimaging workflows writtten in nipype with a focus on the Portable Batch System (PBS) job scheduler.
+It provides tools and documentation for BMC users using the services of UF's Researchcomputing (RC) group.
 
 ### Installation
 
@@ -30,4 +31,4 @@ module load mricron/201306
 
 ### License
 
-New BSD License which can be found [here](https://github.com/ruchidesai/nipype-pbs-workflows/blob/master/LICENSE)
+New BSD License which can be found in the [LICENSE file](https://github.com/ctsit/nipype-pbs-workflows/blob/master/LICENSE)

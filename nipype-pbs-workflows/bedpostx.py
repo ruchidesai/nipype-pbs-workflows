@@ -1,3 +1,10 @@
+"""
+Copyright 2014 University of Florida. All rights reserved. 
+Use of this source code is governed by the license found in the LICENSE file.
+
+For instructions on how to use this script please refer to doc/README_bedpostx.md
+"""
+
 from nipype.workflows.dmri.fsl.dti import create_bedpostx_pipeline
 import nipype.pipeline.engine
 import argparse

@@ -1,5 +1,8 @@
 """
-Import modules
+Copyright 2014 University of Florida. All rights reserved. 
+Use of this source code is governed by the license found in the LICENSE file.
+
+For instructions on how to use this script please refer to doc/README_dcm2niiconverter.md
 """
 
 import os                                    # system functions
@@ -72,25 +75,15 @@ infosource.iterables =  [('subject_id',subjects_data_list)]
 
 
 dcm2nii_converter = pe.Node(interface=Dcm2nii(),name='dcm2nii')
-# dcm2nii_converter.iterables = ("args", subjects_data_list)
-# dcm2nii_converter.inputs.source_names = '%s'
 dcm2nii_converter.inputs.gzip_output = True
-# dcm2nii_converter.inputs.output_dir = experiment_dir + '/' + data_dir_name
 dcm2nii_converter.inputs.reorient_and_crop = False
-#print dcm2nii_converter.cmdline
-# dcm2nii_converter.run()
 
 
-"""
-Define pipeline
-"""
-
-#Initiation of the preparation pipeline
+# Initiation of the preparation pipeline
 prepareflow = pe.Workflow(name="prepareflow")
   
-#Define where the workingdir of the all_consuming_workflow should be stored at
+# Define where the workingdir of the all_consuming_workflow should be stored at
 prepareflow.base_dir = experiment_dir + '/workingdir_prepareflow'
-
 
 #Define pathfinder function
 def pathfinder(subject, experiment_dir, foldername):
@@ -99,31 +92,17 @@ def pathfinder(subject, experiment_dir, foldername):
     print subject
     subject_dir =  os.path.join(experiment_dir, subject, foldername)
     filenames = glob(subject_dir+'/IM_*')
-    # for filename in os.listdir(subject_dir):
-    #     if(filename.startswith('IM_')):
-    #         filenames.append(subject_dir+'/'+filename)
     return filenames[0]
 
 def output_directory(subject, experiment_dir, data_dir_name):
     import os
     return os.path.join(experiment_dir, data_dir_name,subject)
 
-# def subject_data(subject):
-#     subjects_data_list = ['64-axial','6-axial']
-#     iterables_list = []
-#     for data_dir in subjects_data_list:
-#         iterables_list.append(data_dir)
-#     subjectsource.iterables = ('subject_data_id',iterables_list)
-
 #Connect all components
 prepareflow.connect([(infosource, dcm2nii_converter,[(('subject_id',pathfinder, experiment_dir, dicom_dir_name),
                                                  'source_names'),(('subject_id', output_directory, experiment_dir, data_dir_name),
                                                  'output_dir')])
-                    # (infosource, dcm2nii_converter,[])
                      ])
 
-"""
-Run pipeline and create graph
-"""
-
+# Run pipeline and create graph
 prepareflow.run(plugin='MultiProc', plugin_args={'n_procs' : 7})
